@@ -9,7 +9,7 @@ export default function Reframer() {
   const fetchResponse = async () => {
     try {
       const API_URL = process.env.NODE_ENV === 'production'
-      ? 'https://your-production-app.fly.dev'
+      ? 'https://reframer-87426188ce7d.herokuapp.com/'
       : 'http://localhost:8000';
 
       const response = await fetch(`${API_URL}/growthmindset`, {
