@@ -8,7 +8,11 @@ export default function Reframer() {
 
   const fetchResponse = async () => {
     try {
-      const response = await fetch('http://localhost:8000/growthmindset', {
+      const API_URL = process.env.NODE_ENV === 'production'
+      ? 'https://your-production-app.fly.dev'
+      : 'http://localhost:8000';
+
+      const response = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

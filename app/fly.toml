@@ -1,0 +1,15 @@
+[build]
+command = "npm run build"
+publish = ".next"
+
+[functions]
+directory = "netlify/functions"
+
+
+[[services]]
+internal_port = 8000
+protocol = "tcp"
+
+[[services.ports]]
+handlers = ["http"]
+port = 80

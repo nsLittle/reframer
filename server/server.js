@@ -11,7 +11,9 @@ const path = require('path');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production'
+    ? 'https://your-frontend-app.fly.dev'
+    : 'http://localhost:3000',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
