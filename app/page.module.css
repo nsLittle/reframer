@@ -1,168 +1,260 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+.banner {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/images/moss-statue.jpg');
+  filter: blur(1px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
+.title {
+  color: rgb(163, 149, 149);
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6)
 }
 
-.main {
+.image-credit {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-align: right;
+  font-size: 15px;
+  color: #f0f0f0;
+  text-align: right;
+  padding-top: 0px;
+  padding-right: 30px;
+}
+
+.pic-link {
+  color: #add8e6;
+}
+
+.pic-link:hover {
+  text-decoration: underline;
+  color: #87cefa;
+}
+
+.section {
+  width: 90%;
+  margin-left: 5%;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+.subtitle {
+  color:  rgb(94, 88, 88);
+  font-size: 46px;  
+  font-optical-sizing: auto;
+  font-weight: 700;
+  text-shadow: 2px 1px 0px rgba(0, 0, 0, 0.6);
+  margin-top: 50px;
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
+.about,
+.more,
+.at-cause {
+  color:  rgb(163, 149, 149);
+  font-size: 26px;
 }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
+.intro-link,
+.at-cause-link {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin: 20px 0;
 }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
+.intro {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  width: 100vw;
+  height: 35vw;
+  background-image: url('/images/moss-ground.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.intro-title,
+.at-cause-title {
+  color: rgb(116, 113, 113);
+  text-decoration: none;
+  text-align: center;
+  font-size: 64px;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.6);
+  margin-top: 0;
+}
+
+.intro-title:hover {
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 2px 0px rgba(50, 50, 50, 0.7);
+  transition: color 0.3s, text-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.intro-function {
+  margin-top: 300px;
+}
+
+.intro-text,
+.at-cause-text {
+  font-size: 32px;
+  color: #F5F5F5;
+  text-align: center;
+  width: 80vw;
+  margin: 5px;
+}
+
+.banner-mini {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 100vw;
+  height: 35vh;
+  overflow: hidden;
+  background-image: url('/images/moss-statue.jpg');
+  filter: blur(3px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.title-mini {
+  color: rgb(163, 149, 149);
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding-top: 30px;
+}
+
+.body-mini,
+.reframer-body {
+  display: flex;
+  justify-content: center;
+}
+
+.reframer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+}
+
+
+.login-box,
+.plantgoals-box,
+.reframer-box {
+  display: flex;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.plantgoals-input,
+.login-username,
+.login-password {
+  width: 400px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.reframer-input {
+  margin-top: 50px;
+}
+
+/* .plantgoals-submit,
+.login-submit {
+  width: 400px;
+  height: 25px;
+  margin-bottom: 10px;
+} */
+
+.reframer-response,
+.reframer-input-box,
+.plantgoals-input-box {
+  text-align: center;
+}
+
+.reframer-input {
+  height: 30px;
+}
+
+.reframer-input-box,
+.plantgoals-input-box {
+  color: rgb(22, 89, 22);
+}
+
+.reframer-output {
+  font-size: 32px;
+  color: rgb(228, 232, 223);
+  width: 90px;
   font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  border: none; 
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.reframer-submit {
+  height: 30px;
+  background-color: #d3d3d3;
+  border-radius: 5px;
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
+input {
+  width: 600px;
+}
+
+.planting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.seed {
+  width: 200px;
+  height: 200px;
+}
+
+.goal {
+  font-weight: bold;
+  font-size: 32px;
+  text-align: center;
+  color: rgb(103, 121, 76);
+}
+
+
+.apple-music-embed {
+  width: 100%;
+  max-width: 660px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+  text-align: right;
+  padding-top: 75px;
+  padding-right: 15px;
 }
