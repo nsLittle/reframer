@@ -11,14 +11,13 @@ const path = require('path');
 const app = express();
 
 app.use(cors({
-  origin: [
-    'https://reframer-3d028bd4486b.herokuapp.com',
-    'http://localhost:3000'
-  ],
-  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  origin: 'https://reframer-3d028bd4486b.herokuapp.com', // Frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+  credentials: true, // Include cookies if needed
+}))
+
+app.options('*', cors());
 
 app.use(express.json());
 app.use(cookieParser());
