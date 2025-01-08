@@ -63,8 +63,6 @@ export default function Reframer() {
          <div className="reframer-output">
             {response && <h3>{response}</h3>}
           </div>
-
-        <p>help</p>
       </div>
     </>
   );

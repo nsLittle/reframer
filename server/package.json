@@ -12,5 +12,8 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.7"
+  },
+  "engines": {
+  "node": "18.x"
   }
 }

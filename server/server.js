@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://your-frontend-app.fly.dev'
+    ? 'https://little-reframer.dev'
     : 'http://localhost:3000',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -78,8 +78,6 @@ app.post('/growthmindset', async(req, res) => {
     });
   }
 });
-
-
 
 const PORT =process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
