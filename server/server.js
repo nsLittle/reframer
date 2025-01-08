@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://reframer-3d028bd4486b.herokuapp.com/'
+    ? 'https://reframer-3d028bd4486b.herokuapp.com'
     : 'http://localhost:3000',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
