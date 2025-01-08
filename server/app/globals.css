@@ -1,0 +1,51 @@
+.reframer-box {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/images/moss-ground.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+.intro-text {
+  font-size: 36px;
+  color: dark yellow;
+  text-align: center;
+  width: 80vw;
+  margin: 5px;
+}
+
+.reframer-input {
+  margin-top: 50px;
+  height: 40px;
+  width: 600px;
+  margin-bottom: 30px;
+}
+
+.reframer-input-box,
+.plantgoals-input-box {
+  color: rgb(22, 89, 22);
+}
+
+.reframer-submit {
+  height: 35px;
+  width: 90px;
+  background-color: #d3d3d3;
+  border-radius: 5px;
+}
+
+.reframer-output {
+  font-size: 32px;
+  color: dark yellow;
+  width: 550px;
+  font-size: 32px;
+  border: none; 
+  text-align: center;
+}
