@@ -11,9 +11,7 @@ const path = require('path');
 const app = express();
 
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? 'https://reframer-3d028bd4486b.herokuapp.com'
-    : 'http://localhost:3000',
+  origin: 'https://reframer-3d028bd4486b.herokuapp.com',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
