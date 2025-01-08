@@ -18,7 +18,7 @@ export default function Reframer() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
-        credentials: 'include'
+        credentials: 'include',
       });
 
       if (response.ok) {

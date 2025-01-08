@@ -3,40 +3,54 @@ require('dotenv').config();
 const express = require('express');
 const cors = require ('cors');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const OpenAI = require('openai');
-const jwt = require('jsonwebtoken');
 const path = require('path');
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:3000', // Local development origin
+  'https://reframer-3d028bd4486b.herokuapp.com', // Production origin
+];
+
 app.use(cors({
-  origin: 'https://reframer-3d028bd4486b.herokuapp.com', // Frontend URL
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g., mobile apps, Postman) or valid origins
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // Include cookies if needed
-}))
+  credentials: true, // Enable cookies and credentials
+}));
 
-app.options('*', cors());
+// Handle preflight OPTIONS requests
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin); // Echo the request's origin
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.sendStatus(200);
+});
 
 app.use(express.json());
 app.use(cookieParser());
-
-// swagger path?
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
 // basic midleware?
-app.use((req, res, next) => {
-  console.log('Basic Middleware Stuff...');
-  // res.set(CORS_HEADERS);
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('Basic Middleware Stuff...');
+//   // res.set(CORS_HEADERS);
+//   if (req.method === 'OPTIONS') {
+//     return res.status(200).end();
+//   }
+//   next();
+// });
 
 // error handling?
 app.use((err, req, res, next) => {
@@ -53,6 +67,7 @@ app.get('/', (req, res)=>{
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.post('/growthmindset', async(req, res) => {
+  console.log('Request body:', req.body);
   const { prompt } = req.body;
 
   try {
