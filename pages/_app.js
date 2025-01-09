@@ -1,4 +1,4 @@
-import '../globals.css'; // Adjust the path if needed
+import './globals.css'; // Adjust the path if needed
 
 import { Geist, Geist_Mono } from "next/font/google";
 
