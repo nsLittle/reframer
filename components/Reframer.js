@@ -13,9 +13,9 @@ export default function Reframer() {
       : 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '');
 
       console.log('API_URL:', API_URL);
-      console.log('Full API_URL: ', `${API_URL}growthmindset`);
+      console.log('Full API_URL: ', `${API_URL}/growthmindset`);
 
-      const response = await fetch(`${API_URL}/growthmindset`, {
+      const res = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,17 +23,15 @@ export default function Reframer() {
         body: JSON.stringify({ prompt }),
         credentials: 'include',
       })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error('Error:', error));
 
-      console.log('Response: ', response);
+      console.log('Response: ', res);
 
-      if (response.ok) {
-        const data = await response.json();
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Data: ', data);
          setResponse(data.completion);
       } else {
-        console.log('Error', response.status)
+        console.log('Error', res.status)
       }
 
     } catch (error) {
