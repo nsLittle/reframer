@@ -12,6 +12,8 @@ export default function Reframer() {
       ? 'https://reframer-87426188ce7d.herokuapp.com'
       : 'http://localhost:8000';
 
+      console.log('API_URL:', API_URL);
+
       const response = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
         headers: {
