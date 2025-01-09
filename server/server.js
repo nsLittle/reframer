@@ -55,11 +55,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-app.use((err, req, res, next) => {
-	console.error(err.stack);
-	res.status(500).send('Something is broken!');
-});
-
 app.get('/', (req, res)=>{
   res.send('Hello from the mycelium network');
 });
