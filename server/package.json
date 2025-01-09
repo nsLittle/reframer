@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build && next export",
+    "dev": "next dev",
+    "build": "next build",
     "start": "node server/server.js",
-    "lint": "next lint"
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",

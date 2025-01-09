@@ -1,20 +1,12 @@
 require('dotenv').config();
 
 const express = require('express');
-const cors = require ('cors');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const OpenAI = require('openai');
 const path = require('path');
 
 const app = express();
-
-// Serve static files from the build folder
-app.use(express.static(path.join(__dirname, 'build')));
-
-// Fallback route to serve index.html for any non-API route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 app.use((req, res, next) => {
   console.log('Incoming Request Headers:', req.headers);
@@ -26,10 +18,7 @@ app.get('/api/example', (req, res) => {
   res.json({ message: 'Hello from the backend!' });
 });
 
-app.get('*', (req, res) => {
-  res.status(404).send('Route not found');
-});
-
+// Catch-all route for unknown API routes
 app.use((req, res, next) => {
   const send = res.send;
   res.send = function (body) {
@@ -41,31 +30,27 @@ app.use((req, res, next) => {
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://reframer-473c134b8246.herokuapp.com', 
+  'https://reframer-473c134b8246.herokuapp.com',
 ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true, // Allow cookies
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true, // Allow cookies
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-app.get('/', (req, res)=>{
-  res.send('Hello from the mycelium network');
-});
-
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
-
-app.post('/growthmindset', async(req, res) => {
+// API route for growth mindset reframing
+app.post('/growthmindset', async (req, res) => {
   console.log('Request body:', req.body);
   const { prompt } = req.body;
 
@@ -73,25 +58,35 @@ app.post('/growthmindset', async(req, res) => {
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
-        { 
+        {
           role: 'system',
-          content: 'You are a positivity assistant. Please translate my thought into a pithy one sentence positive growth mindest reframing of the original input.'},
+          content:
+            'You are a positivity assistant. Please translate my thought into a pithy one sentence positive growth mindset reframing of the original input.',
+        },
         {
           role: 'user',
           content: prompt,
         },
-      ]
-    })
-    res.json({ completion: completion.choices[0].message.content});
+      ],
+    });
+    res.json({ completion: completion.choices[0].message.content });
   } catch (error) {
     console.log(error);
 
     res.status(500).json({
-      message: 'An error occured while processing this request.',
+      message: 'An error occurred while processing this request.',
       error: error.message,
     });
   }
 });
 
-const PORT =process.env.PORT || 8000;
+// Serve static files from the "out" directory
+app.use(express.static(path.join(__dirname, 'out')));
+
+// Fallback route to serve index.html for any non-API route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'out', 'index.html'));
+});
+
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
