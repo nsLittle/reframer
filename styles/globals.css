@@ -73,7 +73,6 @@
     font-size: 28px;
   }
 }
-
 /* Styles for phones */
 @media only screen and (max-width: 480px) {
   .reframer-box {
@@ -88,18 +87,20 @@
   }
 
   .reframer-input {
-    width: 80%; /* Reduced the width to 80% */
-    height: 35px;
-    margin: 15px 0; /* Added some spacing for better layout */
+    width: 80%; /* Narrower input width */
+    height: 50px; /* Increase height for better usability */
+    font-size: 18px; /* Minimum font size to prevent zoom */
+    margin: 15px 0;
   }
 
   .reframer-submit {
     width: 85px;
-    height: 35px;
+    height: 50px; /* Match input height for consistency */
+    font-size: 18px; /* Ensure consistent font size */
   }
 
   .reframer-output {
-    width: 85%; /* Matches the input box width for consistency */
+    width: 85%;
     font-size: 22px;
     margin: 10px 0;
   }
