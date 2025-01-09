@@ -9,11 +9,12 @@ export default function Reframer() {
   const fetchResponse = async () => {
     try {
       const API_URL = process.env.NODE_ENV === 'production'
-      ? 'https://reframer-473c134b8246.herokuapp.com/'
-      : 'http://localhost:8000';
+      ? 'http://localhost:8000'.replace(/\/$/, '') // Remove trailing slash if it exists
+      // ? 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '')
+      : 'http://localhost:8000'.replace(/\/$/, '');
 
       console.log('API_URL:', API_URL);
-      console.log('Full API_URL: ', `${API_URL}/growthmindset`);
+      console.log('Full API_URL: ', `${API_URL}growthmindset`);
 
       const response = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
@@ -22,7 +23,12 @@ export default function Reframer() {
         },
         body: JSON.stringify({ prompt }),
         credentials: 'include',
-      });
+      })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+
+      console.log('Response: ', response);
 
       if (response.ok) {
         const data = await response.json();
