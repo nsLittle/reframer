@@ -13,6 +13,7 @@ export default function Reframer() {
       : 'http://localhost:8000';
 
       console.log('API_URL:', API_URL);
+      console.log('Full API_URL: ', `${API_URL}/growthmindset`);
 
       const response = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
