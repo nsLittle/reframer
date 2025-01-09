@@ -9,7 +9,7 @@ export default function Reframer() {
   const fetchResponse = async () => {
     try {
       const API_URL = process.env.NODE_ENV === 'production'
-      ? 'https://reframer-87426188ce7d.herokuapp.com'
+      ? 'https://reframer-473c134b8246.herokuapp.com/'
       : 'http://localhost:8000';
 
       console.log('API_URL:', API_URL);
