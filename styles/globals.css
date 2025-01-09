@@ -77,7 +77,11 @@
 @media only screen and (max-width: 480px) {
   .reframer-box {
     padding-top: 10px;
-    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-attachment: scroll;
   }
 
   .intro-text {
@@ -87,16 +91,16 @@
   }
 
   .reframer-input {
-    width: 80%; /* Narrower input width */
-    height: 50px; /* Increase height for better usability */
-    font-size: 18px; /* Minimum font size to prevent zoom */
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
     margin: 15px 0;
   }
 
   .reframer-submit {
     width: 85px;
-    height: 40px; /* Match input height for consistency */
-    font-size: 12px; /* Ensure consistent font size */
+    height: 40px;
+    font-size: 12px;
   }
 
   .reframer-output {
