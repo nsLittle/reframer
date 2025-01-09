@@ -8,22 +8,26 @@ const path = require('path');
 
 const app = express();
 
+// Serve static files from the build folder
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Fallback route to serve index.html for any non-API route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.use((req, res, next) => {
   console.log('Incoming Request Headers:', req.headers);
   next();
 });
-
-// Serve static files from the frontend
-app.use(express.static(path.join(__dirname, 'build')));
 
 // API routes
 app.get('/api/example', (req, res) => {
   res.json({ message: 'Hello from the backend!' });
 });
 
-// Catch-all route to serve frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.status(404).send('Route not found');
 });
 
 app.use((req, res, next) => {
@@ -36,8 +40,8 @@ app.use((req, res, next) => {
 });
 
 const allowedOrigins = [
-  'http://localhost:3000', // Local development origin
-  'https://reframer-473c134b8246.herokuapp.com', // Production origin
+  'http://localhost:3000',
+  'https://reframer-473c134b8246.herokuapp.com', 
 ];
 
 app.use(cors({
