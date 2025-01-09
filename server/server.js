@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 const allowedOrigins = [
   'http://localhost:3000', // Local development origin
-  'https://reframer-3d028bd4486b.herokuapp.com', // Production origin
+  'https://https://reframer-473c134b8246.herokuapp.com', // Production origin
 ];
 
 app.use(cors({
