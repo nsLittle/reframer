@@ -13,13 +13,14 @@
   background-attachment: fixed;
 }
 
-
 .intro-text {
   font-size: 36px;
-  color: dark yellow;
+  color: #FFFF99;
   text-align: center;
   width: 80vw;
   margin: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 .reframer-input {
@@ -43,7 +44,7 @@
 
 .reframer-output {
   font-size: 32px;
-  color: dark yellow;
+  color: #FFFF99;
   width: 550px;
   font-size: 32px;
   border: none; 
