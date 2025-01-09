@@ -95,8 +95,8 @@
 
   .reframer-submit {
     width: 85px;
-    height: 50px; /* Match input height for consistency */
-    font-size: 18px; /* Ensure consistent font size */
+    height: 40px; /* Match input height for consistency */
+    font-size: 16px; /* Ensure consistent font size */
   }
 
   .reframer-output {
