@@ -37,7 +37,6 @@ const openai = new OpenAI({
 });
 
 app.post('/growthmindset', async (req, res) => {
-  console.log('Request body:', req.body);
   const { prompt } = req.body;
 
   try {
@@ -57,7 +56,6 @@ app.post('/growthmindset', async (req, res) => {
     });
     res.json({ completion: completion.choices[0].message.content });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       message: 'An error occurred while processing this request.',
       error: error.message,

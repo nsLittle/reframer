@@ -12,9 +12,6 @@ export default function Reframer() {
       ? 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '')
       : 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '');
 
-      console.log('API_URL:', API_URL);
-      console.log('Full API_URL: ', `${API_URL}/growthmindset`);
-
       const res = await fetch(`${API_URL}/growthmindset`, {
         method: 'POST',
         headers: {
@@ -24,11 +21,8 @@ export default function Reframer() {
         credentials: 'include',
       })
 
-      console.log('Response: ', res);
-
       if (res.ok) {
         const data = await res.json();
-        console.log('Data: ', data);
          setResponse(data.completion);
       } else {
         console.log('Error', res.status)
@@ -41,13 +35,11 @@ export default function Reframer() {
 
   const handleThoughts = (e) => {
     const thought = e.target.value;
-    console.log(thought);
     setPrompt(thought);
   }
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(prompt);
 
     if (prompt.trim()!== '') {
       await fetchResponse();
