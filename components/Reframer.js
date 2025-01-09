@@ -9,9 +9,8 @@ export default function Reframer() {
   const fetchResponse = async () => {
     try {
       const API_URL = process.env.NODE_ENV === 'production'
-      ? 'http://localhost:8000'.replace(/\/$/, '') // Remove trailing slash if it exists
-      // ? 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '')
-      : 'http://localhost:8000'.replace(/\/$/, '');
+      ? 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '')
+      : 'https://reframer-473c134b8246.herokuapp.com'.replace(/\/$/, '');
 
       console.log('API_URL:', API_URL);
       console.log('Full API_URL: ', `${API_URL}growthmindset`);

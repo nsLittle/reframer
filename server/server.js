@@ -13,20 +13,18 @@ app.use(cookieParser());
 const cors = require('cors');
 
 const allowedOrigins = [
-  'http://localhost:8000', // Allow requests from local development
-  'https://reframer-473c134b8246.herokuapp.com', // Allow the deployed frontend
+  'https://reframer-473c134b8246.herokuapp.com',
 ];
 
 app.use(
   cors({
-    origin: allowedOrigins, // Allow specific origins
-    credentials: true, // Allow cookies and credentials
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow these methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'], 
   })
 );
 
-// Ensure preflight requests are handled
 app.options('*', cors());
 
 
