@@ -13,6 +13,19 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve static files from the frontend
+app.use(express.static(path.join(__dirname, 'build')));
+
+// API routes
+app.get('/api/example', (req, res) => {
+  res.json({ message: 'Hello from the backend!' });
+});
+
+// Catch-all route to serve frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.use((req, res, next) => {
   const send = res.send;
   res.send = function (body) {
@@ -22,10 +35,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
 const allowedOrigins = [
   'http://localhost:3000', // Local development origin
-  'https://https://reframer-473c134b8246.herokuapp.com', // Production origin
+  'https://reframer-473c134b8246.herokuapp.com', // Production origin
 ];
 
 app.use(cors({
