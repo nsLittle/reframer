@@ -2,7 +2,8 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 100px;
   align-items: center; 
   width: 100vw;
   height: 100vh;
