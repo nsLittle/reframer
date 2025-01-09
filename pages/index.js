@@ -1,5 +1,4 @@
-import Reframer from "./Reframer";
-import styles from "./globals.css";
+import Reframer from "../components/Reframer";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {

@@ -1,5 +1,4 @@
-import './globals.css'; // Adjust the path if needed
-
+import '../styles/globals.css';
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -12,10 +11,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <div className={`${geistSans.variable} ${geistMono.variable}`}>
-      <Component {...pageProps} />
-    </div>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Component {...pageProps} />
+      </body>
+    </html>
   );
 }
+
+export default MyApp;
