@@ -21,7 +21,6 @@
   width: 80vw;
   margin: 5px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
 }
 
 .reframer-input {
@@ -50,4 +49,58 @@
   font-size: 32px;
   border: none; 
   text-align: center;
+}
+
+/* Styles for tablets */
+@media only screen and (max-width: 768px) {
+  .reframer-box {
+    padding-top: 50px;
+    height: auto;
+    justify-content: center;
+  }
+
+  .intro-text {
+    font-size: 28px;
+    width: 90vw;
+  }
+
+  .reframer-input {
+    width: 80%;
+  }
+
+  .reframer-output {
+    width: 90%;
+    font-size: 28px;
+  }
+}
+
+/* Styles for phones */
+@media only screen and (max-width: 480px) {
+  .reframer-box {
+    padding-top: 10px;
+    height: auto;
+  }
+
+  .intro-text {
+    font-size: 22px;
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .reframer-input {
+    width: 80%; /* Reduced the width to 80% */
+    height: 35px;
+    margin: 15px 0; /* Added some spacing for better layout */
+  }
+
+  .reframer-submit {
+    width: 85px;
+    height: 35px;
+  }
+
+  .reframer-output {
+    width: 85%; /* Matches the input box width for consistency */
+    font-size: 22px;
+    margin: 10px 0;
+  }
 }
