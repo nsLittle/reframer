@@ -82,10 +82,10 @@ export default function Reframer() {
         
         <br />
         
-        <button className="reframer-submit" type="reframer-submit" onClick={handleClick}>Reframer</button>
+        <button className="reframer-submit" type="button" onClick={handleClick}>Reframer</button>
 
         <button className="reframer-email" type="button" onClick={handleEmail}>
-          Email Output
+          Email My Results
         </button>
 
          <div className="reframer-output">

@@ -35,11 +35,18 @@
   color: rgb(22, 89, 22);
 }
 
-.reframer-submit {
+.reframer-submit,
+.reframer-email {
   height: 35px;
   width: 90px;
   background-color: #d3d3d3;
   border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reframer-submit:hover,
+.reframer-email:hover {
+  background-color: #c0c0c0;
 }
 
 .reframer-output {
