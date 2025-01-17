@@ -5,6 +5,8 @@ export default function Reframer() {
   const [ramble, setRamble] = useState('');
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState('');
 
   const fetchResponse = async () => {
     try {
@@ -46,6 +48,30 @@ export default function Reframer() {
     }
   };
 
+  const handleEmail = () => {
+    if (!response) {
+      alert('Please generate a response before sending an email.');
+      return;
+    }
+    setShowPopup(true);
+  };
+
+  const sendEmail = () => {
+    if (!email.trim()) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    const subject = "Positivity Reframer";
+    const body = `Here is your positive thought from the Reframer:\n\nPrompt: ${prompt}\n\nResponse: ${response}`;
+
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+
+    setShowPopup(false);
+  };
+
   return (
     <>
       <div className="reframer-box">
@@ -58,10 +84,32 @@ export default function Reframer() {
         
         <button className="reframer-submit" type="reframer-submit" onClick={handleClick}>Reframer</button>
 
+        <button className="reframer-email" type="button" onClick={handleEmail}>
+          Email Output
+        </button>
+
          <div className="reframer-output">
             {response && <h3>{response}</h3>}
           </div>
       </div>
+
+       {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>Enter your email address</h3>
+            <input
+              type="email"
+              className="email-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email"
+            />
+            <div className="popup-buttons">
+              <button onClick={sendEmail}>Send Email</button>
+              <button onClick={() => setShowPopup(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
     </>
   );
 }
