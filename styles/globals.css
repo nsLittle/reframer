@@ -97,12 +97,12 @@
 }
 
 .popup-buttons button:first-child {
-  background-color: #007BFF;
+  background-color: rgb(22, 89, 22);
   color: white;
 }
 
 .popup-buttons button:last-child {
-  background-color: #f44336;
+  background-color: lightslategray;
   color: white;
 }
 
