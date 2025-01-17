@@ -110,6 +110,7 @@ export default function Reframer() {
             </div>
           </div>
         </div>
+        )}
     </>
   );
 }
